@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using OnlineMenu.Models
+
+<br>
+<br />
+
+<div class="container-fluid well well-sm" id="bgImg" style="margin-left: 30px; font-size:300%; margin-right: 11px; color: white; font-family: 'Hobo Std';">
+    Today's MENU
+    <img src="~/Content/Images/newItem.gif" width="7%" height="7%" ; class="pull-right" />
+</div>
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4" style="padding-left:40px">
+            <div class="header">
+                <h3><label>@item.name</label></h3>
+
+            </div>
+            <div class="thumbnews thumb-shadow post-thumbnail img-responsive">
+                <img src="/Content/UploadedImg/img_@(item.Id)_0.jpg" height="200px" width="350px" />
+            </div>
+            <form action='@Url.Action("ImageView", "Home")' method="post" role="form" style="stop-opacity:initial">
+                <input type="hidden" value="@item.Id" name="Id" />
+
+                <div class="news thumbnews">
+                    <h4>
+                        <hr />
+                        <b>Price: </b>&nbsp PKR. @(item.price)/-<br />
+                        <b>Description: </b>&nbsp @item.desc <hr />
+                    </h4>
+                    <button type="submit" class="btn btn-success" value="more" style="font-family:'Hobo Std'">
+                        More >>
+                    </button>
+                </div>
+            </form>
+            <br />
+        </div>
+    }
+</div>
+
+@*<div>
+    hi
+    @RenderSection("FancyBox_1", required: false)
+
+    @RenderSection("FancyBox_2", required: false)
+    bye
+</div>*@
+
+<br /><br />
+
+
+
+<br />
+<br />
+

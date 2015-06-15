@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Add Items";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div>
+    <br /><br /><br />
+    <div class="container-fluid">
+        <h1 style="color:white; font-family:'Hobo Std';"> Add New Items </h1>
+    </div>
+
+    <form class="navbar-form container-fluid form-horizontal" action="~/Admin/SaveItem" method="post" enctype="multipart/form-data">
+        <input type="text" class="form-control" name="name" placeholder="Item Name" style="width:400px" required />
+        </br></br>
+        <input type="text" class="form-control" name="price" placeholder="Item Price" style="width:400px" required />
+        </br></br>
+        <input type="text" class="form-control" name="desc" placeholder="Item Description" style="width:400px" required />
+        </br></br>
+
+        <div style="color:white; font-size:large">
+            Upload Image Here... 
+            <input type="file" name="img" multiple required />
+
+        </div>
+
+        <br />
+        <input class="btn btn-success" type="submit" value="Add Item" />
+    </form>
+
+
+
+
+
+
+
+
+
+</div>

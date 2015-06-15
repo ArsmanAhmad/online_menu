@@ -1,0 +1,260 @@
+﻿@*class"hvr-bounce-to"*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @* <link rel="stylesheet" href="~/Content/jquery.shining.min.css"> *@
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+
+    <!-- Start HEAD section -->
+    <link rel="stylesheet" type="text/css" href="~/engine1/style.css" />
+    <script type="text/javascript" src="~/engine1/jquery.js"></script>
+    <!-- End HEAD section -->
+
+
+
+
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 1366px 750px;
+            background-image: url(../Content/Images/bg4.jpg);
+        }
+
+        #footer {
+            font-size: 17px;
+            font-weight: bold;
+            font-family: Narkisim;
+            color: white;
+            clear: both;
+            text-align: left;
+            padding: 5px;
+            background-image: url(../Content/Images/bg.jpg);
+            opacity: 1;
+        }
+
+        #bgImg {
+            background-image: url(../Content/Images/about.jpg);
+        }
+    </style>
+
+</head>
+
+<body class="img-responsive">
+
+    @*<div class="pull-left">
+            <img style="padding-left:40px" src="~/Content/Icons/logo.png" width="120" height="100">
+        </div>
+        <br /><br /><br /><br /><br />*@
+
+    @{
+        if ((string)Session["user"] == null)
+        {
+            Session["user"] = "Anonymos";
+        }
+    }
+
+
+
+    <div>
+        <nav class="nav navbar-inverse navbar-fixed-top" role="navigation">
+
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                        data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand"></a>
+                @* <a style="font-size: xx-large; font-family:'Old English Text MT'; color:black; background-color: white" class="navbar-brand" href="">Online Menu</a>
+                *@
+            </div>
+
+            <div style="font-weight:600" id="navbar" class="collapse navbar-collapse">
+                <img src="~/Content/Icons/logo2.png" class="pull-left" width="90px" height="50px" style="margin-right:2%" />
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink(" Home", "Index", "Home", new { @class = "glyphicon glyphicon-home" })</li>
+                    <li>@Html.ActionLink(" Menu", "Menu", "Home", new { @class = "glyphicon glyphicon-th-list" })</li>
+                    <li>@Html.ActionLink(" Make Order", "Order", "Home", new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                    <li>@Html.ActionLink(" Contact Us", "ContactUs", "Home", new { @class = "glyphicon glyphicon-cutlery" })</li>
+
+                    @{
+                        if ((string)Session["user"] == "Anonymos")
+                        {
+                            <li>@Html.ActionLink(" SignUp", "SignUp", "Home", new { @class = "glyphicon glyphicon-send" })</li>
+                        }
+                        else if ((string)Session["user"] != "Anonymos")
+                        {
+                            <li>@Html.ActionLink(" SignOut", "SignOut", "Home", new { @class = "glyphicon glyphicon-hand-right" })</li>
+                        }
+
+                    }
+
+                    @*<li style="margin-left:10px;margin-right:10px;"><a href="~/Home/index"><span class="glyphicon glyphicon-home"><b> Home </b></span></a></li>
+                        <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/Menu"><span class="glyphicon glyphicon-glass"><b> Menu </b></span></a></li>
+                        <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/Order"><span class="glyphicon glyphicon-shopping-cart"><b> Order </b></span></a></li>
+                        <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/ContactUs"><span class="glyphicon glyphicon-cutlery"><b> Contact Us </b></span></a></li>
+                        <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/SignUp"><span class="glyphicon glyphicon-cutlery"><b> Sign Up </b></span></a></li>
+                    *@
+                </ul>
+
+                @{
+                    string name = (string)Session["user"];
+                    if ((string)Session["user"] != "Anonymos")
+                    {
+                        <div class="pull-right" style="font-family: 'Hobo Std'; margin-top: 1%; margin-right: 2%; font-size: large; color: yellow;">
+                            <b style="color:white">Welcome to, </b> @name
+                        </div>
+
+                    }
+                    else
+                    {
+                        <form action="~/Home/login" class="pull-right">
+                            <button id="login" class="btn btn-danger" type="submit" name="login" style="padding-left:30px; padding-right:30px; margin-right:30px; margin-top:10px; "><span class="glyphicon glyphicon-user"></span>&nbsp LOGIN </button>
+                        </form>
+                    }
+                }
+            </div>
+
+        </nav>
+
+    </div>
+
+    <br /><br />
+    <!-- Start BODY section -->
+    <div id="wowslider-container1">
+        <div class="ws_images">
+            <ul>
+                <li><img src="~/data1/images/achari_tikka.jpg" alt="Achari Tikka" title="By: Arsman Ahmad" id="wows1_0" /></li>
+                <li><img src="~/data1/images/butter_chicken_slice.jpg" alt="Butter Chicken Slice" id="wows1_1" /></li>
+                <li><img src="~/data1/images/butter_strawbery.jpg" alt="Butter Strawbery" id="wows1_2" /></li>
+                <li><img src="~/data1/images/chicken_tikka.jpg" alt="Chicken Tikka" id="wows1_3" /></li>
+                <li><img src="~/data1/images/chickenburger.jpg" alt="ChickenBurger" id="wows1_4" /></li>
+                <li><img src="~/data1/images/deal.jpg" alt="Deal" id="wows1_5" /></li>
+                <li><img src="~/data1/images/drink_cool_imagge_wallpaper_hd.jpg" alt="Special Drink" id="wows1_6" /></li>
+                <li><img src="~/data1/images/hydarbadi_baryani.jpg" alt="Hydarbadi Baryani" id="wows1_7" /></li>
+                <li><img src="~/data1/images/ice_cream.jpg" alt="Ice Cream" id="wows1_8" /></li>
+                <li><img src="~/data1/images/italina_pizza.jpg" alt="Italina Pizza" id="wows1_9" /></li>
+                <li><img src="~/data1/images/malayi_botti.jpg" alt="Malayi Botti" id="wows1_10" /></li>
+                <li><img src="~/data1/images/special_drink.jpg" alt="Special Drink" id="wows1_11" /></li>
+                <li><img src="~/data1/images/special_pizza.jpg" alt="Special Pizza" id="wows1_12" /></li>
+                <li><img src="~/data1/images/taste.jpg" alt="carousel bootstrap" id="wows1_13" /></li>
+                <li><img src="~/data1/images/vegitable_chicken_rice.jpg" alt="Vegitable Chicken Rice" id="wows1_14" /></li>
+            </ul>
+        </div>
+        <div class="ws_bullets">
+            <div>
+                <a href="#" title="Achari Tikka"><span><img src="~/data1/tooltips/achari_tikka.jpg" alt="Achari Tikka" />1</span></a>
+                <a href="#" title="Butter Chicken Slice"><span><img src="~/data1/tooltips/butter_chicken_slice.jpg" alt="Butter Chicken Slice" />2</span></a>
+                <a href="#" title="Butter Strawbery"><span><img src="~/data1/tooltips/butter_strawbery.jpg" alt="Butter Strawbery" />3</span></a>
+                <a href="#" title="Chicken Tikka"><span><img src="~/data1/tooltips/chicken_tikka.jpg" alt="Chicken Tikka" />4</span></a>
+                <a href="#" title="ChickenBurger"><span><img src="~/data1/tooltips/chickenburger.jpg" alt="ChickenBurger" />5</span></a>
+                <a href="#" title="Deal"><span><img src="~/data1/tooltips/deal.jpg" alt="Deal" />6</span></a>
+                <a href="#" title="Special Drink"><span><img src="~/data1/tooltips/drink_cool_imagge_wallpaper_hd.jpg" alt="Special Drink" />7</span></a>
+                <a href="#" title="Hydarbadi Baryani"><span><img src="~/data1/tooltips/hydarbadi_baryani.jpg" alt="Hydarbadi Baryani" />8</span></a>
+                <a href="#" title="Ice Cream"><span><img src="~/data1/tooltips/ice_cream.jpg" alt="Ice Cream" />9</span></a>
+                <a href="#" title="Italina Pizza"><span><img src="~/data1/tooltips/italina_pizza.jpg" alt="Italina Pizza" />10</span></a>
+                <a href="#" title="Malayi Botti"><span><img src="~/data1/tooltips/malayi_botti.jpg" alt="Malayi Botti" />11</span></a>
+                <a href="#" title="Special Drink"><span><img src="~/data1/tooltips/special_drink.jpg" alt="Special Drink" />12</span></a>
+                <a href="#" title="Special Pizza"><span><img src="~/data1/tooltips/special_pizza.jpg" alt="Special Pizza" />13</span></a>
+                <a href="#" title="Taste"><span><img src="~/data1/tooltips/taste.jpg" alt="Taste" />14</span></a>
+                <a href="#" title="Vegitable Chicken Rice"><span><img src="~/data1/tooltips/vegitable_chicken_rice.jpg" alt="Vegitable Chicken Rice" />15</span></a>
+            </div>
+
+        </div>
+        <div class="ws_shadow"></div>
+
+    </div>
+    <script type="text/javascript" src="~/engine1/wowslider.js"></script>
+    <script type="text/javascript" src="~/engine1/script.js"></script>
+    <!-- End BODY section -->
+    
+    
+    @RenderBody()
+
+
+
+    <div id="footer" class="row" style="opacity:1">
+        <div id="bgImg" style="font-size:17px; font-weight:bold; color:lightgray; font-family:Narkisim; clear:both; text-align:center">
+            Enterprize Application Development
+        </div>
+
+        <br />
+
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+            <div style="font-family:Aharoni; font-weight:bold; color:black">INFORMATION </div>
+            <div style="font-size:medium; font-family:Arial">
+                <br />
+                <p><a href="~/Home/Index">Our Services</a></p>
+                <p><a href="~/Home/ContactUs">Contact Us</a></p>
+                <p><a href="~/Home/Index">Legal Notice</a></p>
+                <p><a href="~/Home/Index">About Us</a></p><br />
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div style="font-family: Aharoni; font-weight: bold; color: black">UpComing Features</div>
+            <div style="font-size:medium; font-family:Arial;">
+                <br />
+
+                <p><a href="#">Special</a></p>
+                <p><a href="#">New Products</a></p>
+                <p><a href="#">Top Saller</a></p>
+                <p><a href="#">Supplier</a></p><br />
+
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-3">
+            <a href="https://www.facebook.com/arsman.ahmad" target="_blank"><img src="~/Content/Images/facebook1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
+            <a href="https://twitter.com/ArsmanAhmad" target="_blank"><img src="~/Content/Images/twiter1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
+            <a href="https://plus.google.com/118217101882189306131" target="_blank"><img src="~/Content/Images/google1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
+            <a href="mailto:arsman_ahmad@yahoo.com" target="_blank"><img src="~/Content/Images/yahoo1.png" width="60" height="60"></a>
+
+            <img src="~/Content/Images/follow.png" width="200" height="120" class="pull-right"><br>
+        </div>
+
+        <div class="col-sm-3" style="font-family:'Hobo Std'; font-size:large">
+           <br />
+             <form class="navbar-form container-fluid form-horizontal" method="post" action="/Home/SearchItem">
+
+                <input type="text" class="form-control" name="searchItem" id="searchItem" placeholder="Item Name" style="width:90%; border:solid" />
+                <br /><br />
+                <button type="submit" class="btn btn-success" id="searchBtn" name="searchBtn" 
+                            style=" font-weight:bold; font-family:'Hobo Std'">
+                    Search Item
+                </button>
+            </form>
+            <hr />
+        </div>
+
+        <div style="background-color:black; font-size:17px; font-weight:bold; font-family:Narkisim; clear:both; text-align:center">
+            &copy Copyright - All Rights Reserved by <a href="https://www.facebook.com/arsman.ahmad" target="_blank"><b style="color:yellow;">Arsman Ahmad</b></a> &reg
+        </div>
+    </div>
+
+
+
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/Bundles/jquery");
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</body>
+</html>

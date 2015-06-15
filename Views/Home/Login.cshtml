@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+@model OnlineMenu.Models.user
+
+<meta name="viewport" content="width=device-width" />
+
+
+
+<br /><br /><br /><br /><br />
+<div class="row">
+    <div class="col-lg-6"></div>
+
+    @*<div class="col-lg-6" style="background-color:lightyellow; opacity:0.7">
+            <img src="~/Content/Images/admin_login.gif" />
+        </div>*@
+
+    <div class="col-lg-4" style="background-color:lightyellow; opacity:0.7">
+        <br />
+
+
+        <div>
+            <img src="~/Content/Icons/logo.png" width="70%" height="70%" />
+            <h1 style="font-family:'Hobo Std';" class="pull-right"> Sign In </h1>
+
+        </div>
+        @if ((string)Session["user"] == null)
+        {
+            <div class="alert alert-danger" style="font-family:'Berlin Sans FB'; font-size:x-large; opacity:0.7">
+                Login Failed.,<br />
+                Wrong Username Or Password
+            </div>
+            Session["user"] = "Anonymos";
+        }
+
+
+
+
+        @*<form class="navbar-form container-fluid" method="post" action="/Home/LoginOK">*@
+
+        <div style="font-weight:bold">
+            <hr />
+            @using (Html.BeginForm("LoginOK", "Home", FormMethod.Post, new { @class = "navbar-form container-fluid", enctype = "multipart/form-data" }))
+            {
+                @*<input type="text" class="form-control" name="name" placeholder="Login Name" style="width:400px" required />*@
+                @Html.ValidationMessageFor(b => b.name)
+                @Html.TextBoxFor(b => b.name, new { @class = "form-control", placeholder = "Enter Login Name", name = "name", style = "width:400px", id = "UserName" })
+                <div id="result" class="pull-right" style="color:red"></div>
+                
+                
+                @*<input type="password" class="form-control" name="password" placeholder="Password" style="width:400px" required />*@
+                @Html.ValidationMessageFor(b => b.password);
+                @Html.PasswordFor(b => b.password, new { @class = "form-control", placeholder = "Enter Password", name = "password", style = "width:400px", id = "passwordBox", required = "required" })
+                
+                <br /><br /><br />
+
+                <button type="submit" class="btn btn-danger pull-right" id="next" style="width:100% ;padding-left:10%; padding-right:10%;
+                             font-weight:bold; font-family:'Hobo Std'">
+                    NEXT
+                </button>
+
+                
+                <div id="checking">Checking...</div>
+                <button type="submit" class="btn btn-success pull-right" id="login1" style="width:100%;padding-left:10%; padding-right:10%;
+                             font-weight:bold; font-family:'Hobo Std'">
+                    LOGIN
+                </button>
+
+                <div style="text-align:center;">
+                    <br /><br />
+                    <button style="color:red; background:none; border:none" id="differntSignIn"><u> Or LOGIN With Different Name </u></button>
+                </div>
+
+            }
+        </div>
+        @*</form>*@
+        <br /><br /><br />
+    </div>
+
+    @Scripts.Render("~/Scripts/jquery-1.8.2")
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+            $('#checking').hide();
+            $('#passwordBox').hide();
+            $('#login1').hide();
+            $('#differntSignIn').hide();
+            //$('#b1').click(function ()
+
+            $('#next').click(function () {
+
+                var userName = $('#UserName').val();
+
+                // alert('User Name ='+ userName);
+                $('#checking').show();
+
+                $.getJSON("/Home/ValidateUserName?UserName=" + userName, function (data) {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#result').text("*UserName not Available");
+
+                    }
+                    else {
+                        if ($('UserName').Length > 0) {
+                            $('#result').text("*UserName Invalid");
+                        }
+                        else {
+                            $('#UserName').hide();
+                            $('#next').hide();
+                            $('#passwordBox').show();
+                            $('#login1').show();
+                            $('#differntSignIn').show();
+                            $('#result').text("");
+                        }
+                    }
+                });
+
+            });
+
+            $('#differntSignIn').click(function () {
+
+                $('#UserName').show();
+                $('#next').show();
+                $('#passwordBox').hide();
+                $('#login1').hide();
+                $('#differntSignIn').hide();
+            });
+
+
+        });
+    </script>
+
+
+
+
+</div>
+
+
+<br /><br /><br /><br /><br />
+

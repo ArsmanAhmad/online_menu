@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = "All Approved Order Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<style>
+    #bgImg {
+        background-image: url(../Content/Images/about.jpg);
+        color: white;
+    }
+
+    table, th, td {
+        border: 2px solid black;
+
+    }
+
+</style>
+
+<br />
+<div id="bgImg">
+    <h1> Delivered Orders: </h1>
+</div>
+<blockquote>
+
+    @foreach (var Order in Model)
+    {
+        <table cellpadding="10" style="border:double; margin-left:10%; text-align:left; width:80%; background-color:lightyellow; opacity:0.7" class="table table-striped">
+            <col width="30%">
+            <col width="70%">
+                <tr>
+                    <th>
+                        <b>Order Id:</b>
+                    </th>
+                    <th>
+                        @Order.Id
+                    </th>
+                </tr>
+
+
+                <tr>
+                    <th>
+                        <b>Customer Name:</b>
+                    </th>
+                    <th>
+                        @Order.name
+                    </th>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <b>Address:</b>
+                    </td>
+                    <td>
+                        @Order.address
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <b>Email ID:</b>
+                    </td>
+                    <td>
+                        @Order.email
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <b>Comments:</b>
+                    </td>
+                    <td>
+                        @Order.comment
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>Status:</b>
+                    </td>
+                    <td>
+                        Order has been <b style="color:red">delivered.</b>
+                    </td>
+                </tr>
+
+        </table>
+       
+        <hr /><hr />
+        
+    }
+
+
+
+
+
+    @*    <div style="background-color:lightyellow; opacity:0.7">
+                <ul>
+                    <br />
+                    <li>
+                        <input type="hidden" value="@Order.Id" name="Id" />
+                        <b>Order ID:</b>  @Order.Id <br />
+                        <b>Name:</b>  @Order.name <br />
+                        <b>Adress:</b>  @Order.address <br />
+                        <b>Contact:</b>  @Order.number <br />
+                        <b>Email:</b>  @Order.email <br />
+
+                        @if (Order.pizzaQuantity != 0)
+                        {
+                            <b>Pizza:</b>  @Order.pizzaQuantity <br />
+                        }
+
+                        @if (Order.chickenBurgerQuantity != 0)
+                        {
+                            <b>Chicken Burger:</b>  @Order.chickenBurgerQuantity <br />
+                        }
+
+
+                        @if (Order.fishBurgerQuantity != 0)
+                        {
+                            <b>Fish Burger:</b>  @Order.fishBurgerQuantity <br />
+                        }
+
+                        @if (Order.iceCreamQuantity != 0)
+                        {
+                            <b>Ice Cream:</b>  @Order.iceCreamQuantity <br />
+                        }
+
+                        @if (Order.sliceQuantity != 0)
+                        {
+                            <b>Slice:</b>  @Order.sliceQuantity <br />
+
+                        }
+
+                        @if (Order.baryaniQuantity != 0)
+                        {
+                            <b>Baryani:</b>  @Order.baryaniQuantity <br />
+                        }
+
+                        @if (Order.tikkaQuantity != 0)
+                        {
+                            <b>Tikka:</b>  @Order.tikkaQuantity <br />
+                        }
+
+                        @if (Order.vegRiceQuantity != 0)
+                        {
+                            <b>Vegitable Rice:</b> @Order.vegRiceQuantity <br />
+                        }
+
+
+                        <b>Comment:</b>  @Order.comment <br />
+
+
+                        <b>Order Status: </b>  Approved...    <br />
+
+
+                    </li>
+                </ul>
+                <br />
+            </div>
+
+            <br />
+            <hr />
+            <hr />
+            <br />
+        }*@
+
+
+</blockquote>

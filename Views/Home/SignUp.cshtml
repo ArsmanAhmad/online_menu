@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model OnlineMenu.Models.user
+
+<div class="row">
+    <br /><br /><br />
+    <div class="col-lg-4"></div>
+
+    <div class="col-lg-4" style="background-color:lightyellow; opacity:0.7">
+
+        <div>
+            <img src="~/Content/Icons/logo.png" width="70%" height="70%" />
+            <h1 style="font-family:'Hobo Std';" class="pull-right"> Sign up </h1>
+
+        </div>
+
+        <div style="font-weight:bold">
+            @*<form class="navbar-form container-fluid" method="post" action="/Home/CustomerSignUp">*@
+            @using (Html.BeginForm("CustomerSignUp", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "navbar-form container-fluid" }))
+            {
+                <hr />
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                
+                
+                <br />
+                @*if ((string)Session["signUpOk"] == "error")
+                {
+                    <div class="alert alert-danger" style="font-family: 'Hobo Std'; font-size: x-large; ">
+                        Sign Up Failed.,<br />UserName Already Exists
+                    </div>
+
+                    Session["signUpOk"] = "ok";
+
+                }*@
+
+
+                @*<input type="text" class="form-control" name="name" placeholder="User Name" style="width:400px" required />*@
+                <div class="editor-field">
+                    @Html.ValidationMessageFor(model => model.name)
+                    @Html.TextBoxFor(model => model.name, new { @class = "form-control", placeholder = "UserName", name = "name", style = "width:400px", id = "UserName" })
+                    <div id="result" class="pull-right" style="color:red"></div>
+                </div>
+                <br />
+                
+                @*<input type="email" class="form-control" name="email" placeholder="Email" style="width:400px" required />*@
+                <div class="editor-field">
+                    @Html.ValidationMessageFor(model => model.email)
+                    @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Email ID", name = "email", style = "width:400px", type = "email" })
+                </div>
+                    <br />
+                
+                @*<input type="password" class="form-control" name="password" placeholder="Password" style="width:400px" required />*@
+                <div class="editor-field">
+                    @Html.ValidationMessageFor(model => model.password)
+                    @Html.PasswordFor(model => model.password, new { @class = "form-control", placeholder = "Password", name = "password", style = "width:400px", id="password1" })
+                </div>
+                    <br />
+                @* Confirm Password
+    <div class="editor-field">
+        @Html.ValidationMessageFor(model => model.password)
+        @Html.PasswordFor(confirm => confirm, new { @class = "form-control", placeholder = "Confirm Password", name = "confirmPassword", style = "width:400px", id="password2" })
+    </div>
+        <br />*@
+
+                @*<input type="text" class="form-control" name="contact" placeholder="Conatct Number" style="width:400px" required />*@
+                <div class="editor-field">
+                    @Html.ValidationMessageFor(model => model.contact)
+                    @Html.TextBoxFor(model => model.contact, new { @class = "form-control", placeholder = "Contact No.", name = "contact", style = "width:400px" })
+                </div>
+                <br />
+                
+                <div id="checking">Checking...</div>
+                <div id="result"></div>
+                
+                <button type="submit" class="btn btn-success pull-right" id="signUp" style="border:double;padding-left:10%; padding-right:10%;
+                              font-family:'Hobo Std'">
+                    Sign Up
+                </button>
+
+                @*<button type="button" class="btn btn-danger pull-right" id="b1" value="sub" style="padding-left:10%; padding-right:10%;
+                             margin-right:5%; font-family:'Hobo Std'">
+                    check
+                </button>*@
+                
+                <br /><br />
+            }
+        </div>
+
+        <!-------------->
+        
+        @Scripts.Render("~/Scripts/jquery-1.8.2")
+        @Scripts.Render("~/bundles/jquery")
+        <script>
+            $(document).ready(function () {
+
+                $('#checking').hide();
+
+                //$('#b1').click(function ()
+                $('#UserName').focusout(function () {
+
+                    var userName = $('#UserName').val();
+
+                    //alert('User Name ='+ userName);
+                    $('#checking').show();
+                    
+                    $.getJSON("/Home/CheckUserName?UserName=" + userName, function (data) {
+                        $('#checking').hide();
+                        if (data) {
+                            $('#result').text("*User Name Already Exists");
+                            $('#signUp').attr('disabled', 'disabled');
+
+                        }
+                        else {
+                            $('#result').text("*User Name Available");
+                            $('#signUp').removeAttr('disabled')
+                        }
+                    });
+
+                });
+
+            });
+        </script>
+
+
+
+
+
+        @*</form>*@
+
+    </div>
+
+
+    <div class="col-lg-4"></div>
+
+</div>
+<br /><br /><br />

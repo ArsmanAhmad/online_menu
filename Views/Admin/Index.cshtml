@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using OnlineMenu.Models
+
+<br />
+<div id="bgImg">
+    <h1 style="font-family:'Hobo Std'; color:white;"> Pendig Orders </h1>
+    <hr />
+</div>
+<blockquote>
+    @{
+        if (Model == null)
+        {
+            <p style="background-color:lightyellow; opacity:0.7; text-align:center;"> No Pending Order.....</p>
+        }
+        else
+        {
+            foreach (var order in Model)
+            {
+                <br />
+                <div class="well well-sm" style="margin-left:10%; margin-right:10%">
+                    <form class="form-horizontal" action='@Url.Action("Approved","Admin")' method="post">
+                        <input type="hidden" value="@order.Id" name="Id" />
+                        <p><b>Order Id:</b> @order.Id </p>
+                        <p><b>Name:</b> @order.name </p>
+                        <p><b>Email:</b> @order.email </p>
+                        <p><b>Address:</b> @order.address</p>
+                        <p><b>Comment:</b> @order.comment</p>
+                        <p><b>Status:</b> Pending....</p>
+                        @foreach (var orderItem in order.OrderItems)
+                        {
+                            <p>@orderItem.Item.name : @orderItem.Quantity</p>
+                        }
+                        <input type="hidden" name="OrderId" value="@order.Id" />
+                        <input class="btn btn-primary pull-right" style="background-color:brown" type="submit" value="Deliver" />
+                    </form>
+                    <br />
+                </div>
+
+
+                <br />
+                <hr />
+                <hr />
+                <br />
+            }
+        }
+    }
+
+
+</blockquote>

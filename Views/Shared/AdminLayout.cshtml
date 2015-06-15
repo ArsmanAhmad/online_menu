@@ -1,0 +1,139 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminLayout</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @* <link rel="stylesheet" href="~/Content/jquery.shining.min.css"> *@
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+
+
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 1366px 750px;
+            background-image: url(../Content/Images/bg1.jpg);
+        }
+
+        #footer {
+            font-size: 17px;
+            font-weight: bold;
+            font-family: Narkisim;
+            color: white;
+            clear: both;
+            text-align: left;
+            padding: 5px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <br /><br /><br />
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8">
+
+            <div>
+                <b style="font-family:'Hobo Std'; color:white; font-size:xx-large;">Admin Panel</b>
+                <div class="pull-right">
+
+                </div>
+            </div>
+
+            <nav class="nav navbar-default" role="navigation">
+
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false"
+                            aria-controls="navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand"></a>
+                </div>
+
+                <div style="font-weight:600" id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink(" Home", "index", "Admin", new { @class = "glyphicon glyphicon-home" })</li>
+                        <li>@Html.ActionLink(" Add NewItems", "AddItems", "Admin", new { @class = "glyphicon glyphicon-th-list" })</li>
+                        <li>@Html.ActionLink(" Order Details", "OrderDetails", "Admin", new { @class = "glyphicon glyphicon-barcode" })</li>
+
+
+                        @*<li style="margin-left:10px;margin-right:10px;"><a href="~/Admin/index"><span class="glyphicon glyphicon-home"><b> Home </b></span></a></li>
+                            <li style="margin-left:10px;margin-right:10px;"><a href="~/Admin/AddItems"><span class="glyphicon glyphicon-glass"><b> Add Items </b></span></a></li>
+                            <li style="margin-left:10px;margin-right:10px;"><a href="~/Admin/OrderDetails"><span class="glyphicon glyphicon-barcode"><b> Order Details </b></span></a></li>*@
+                    </ul>
+
+                    <form action="~/Admin/logout" class="pull-right">
+                        <button class="btn btn-danger" type="submit" name="logout" style="margin-right:10px; margin-top:8px; "> LOGOUT </button>
+                    </form>
+                </div>
+
+            </nav>
+
+
+            @RenderBody()
+
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+
+    <!------------------------------------------------------>
+
+    <div id="footer" class="navbar-fixed-bottom" style="opacity:0.8">
+        <div style="background-color:black; font-size:17px; font-weight:bold; font-family:Narkisim; clear:both; text-align:center">
+
+            <script type="text/javascript">
+                tday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+                tmonth = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+                function GetClock() {
+                    var d = new Date();
+                    var nday = d.getDay(), nmonth = d.getMonth(), ndate = d.getDate(), nyear = d.getYear();
+                    if (nyear < 1000) nyear += 1900;
+                    var d = new Date();
+                    var nhour = d.getHours(), nmin = d.getMinutes(), nsec = d.getSeconds(), ap;
+
+                    if (nhour == 0) { ap = " AM"; nhour = 12; }
+                    else if (nhour < 12) { ap = " AM"; }
+                    else if (nhour == 12) { ap = " PM"; }
+                    else if (nhour > 12) { ap = " PM"; nhour -= 12; }
+
+                    if (nmin <= 9) nmin = "0" + nmin;
+                    if (nsec <= 9) nsec = "0" + nsec;
+
+                    document.getElementById('clockbox').innerHTML = "" + tday[nday] + " - " + tmonth[nmonth] + " " + ndate + ", " + nyear + " - " + nhour + ":" + nmin + ":" + nsec + ap + "";
+                }
+
+                window.onload = function () {
+                    GetClock();
+                    setInterval(GetClock, 1000);
+                }
+            </script>
+            <div id="clockbox"></div>
+
+        @*    &copy Copyright - All Rights Reserved by <a href="https://www.facebook.com/arsman.ahmad" target="_blank"><b style="color:yellow;">Arsman Ahmad</b></a> &reg
+            *@
+        </div>
+    </div>
+
+</body>
+</html>

@@ -2,6 +2,7 @@
     ViewBag.Title = "Menu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @using OnlineMenu.Models
 
 <br>
@@ -15,7 +16,7 @@
 
     @foreach (var item in Model)
     {
-        <div class="col-lg-4" style="padding-left:40px">
+        <div class="col-lg-4 hvr-bob" style="padding-left:40px; font-family:'Comic Sans MS'">
             <div class="header">
                 <h3><label>@item.name</label></h3>
 

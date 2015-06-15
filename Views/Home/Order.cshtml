@@ -17,7 +17,7 @@
 
     <div class="col-sm-4" style="font-family:'Hobo Std'; background-color:lightyellow; opacity:0.8">
         <br />
-        <h2>Give Order</h2>
+        <h1 class="hvr-bob" style="color: brown">Give Order</h1>
         <hr />
 
         <div>
@@ -26,32 +26,33 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-4 control-label">Name</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="name" name="name" required placeholder="Arsman">
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="ie., Arsman">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label">Contact No.</label>
                         <div class="col-sm-6">
-                            <input type="text" maxlength="11" class="form-control" id="number" name="number" required placeholder="03219190857">
+                            <input type="text" maxlength="11" class="form-control" id="number" name="number" required placeholder="ie., 03219876543">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="add" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="abc@xyz.com">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="ie., abc@xyz.com">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="col-sm-4 control-label">Address</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="address" name="address" required placeholder="Mughelpura, Lahore">
+                            <input type="text" class="form-control" id="address" name="address" required placeholder="ie., Mughelpura, Lahore">
                         </div>
                     </div>
 
                     <div>
                         <hr />
-                        <h4> &nbsp Select Items</h4>
+                        <h4 style="color:brown"> &nbsp Select Items</h4>
+                        <br />
 
                         @foreach (Item ob in Model)
                         {
@@ -73,10 +74,12 @@
 
 
                     <br />
-                    <div>
-                        &nbsp&nbsp<textarea rows="8" cols="55" name="comment" placeholder="Plz, Deliver Fast" style="border:solid" required></textarea>
+                    <div class="form-horizontal col-lg-offset-1">
+                        <label>Comment:</label>
+                        <textarea rows="8" cols="50" name="comment" placeholder="Plz, Deliver Fast" style="border:solid" required></textarea>
                     </div>
                     <div class="pull-right">
+                        <br />
                         <button type="submit" class="btn btn-success" value="sub"> Order Now </button>
                         <button type="reset" class="btn btn-danger" value="sub"> Cancel Order </button>
                     </div>

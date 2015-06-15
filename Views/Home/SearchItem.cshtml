@@ -3,4 +3,82 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Search Item</h2>
+@using OnlineMenu.Models
+
+<br>
+<br />
+
+<div class="container-fluid well well-sm" id="bgImg" style="margin-left: 30px; font-size:300%; margin-right: 11px; color: white; font-family: 'Hobo Std';">
+    Items...
+</div>
+<div>
+    @{
+        if (Model == null)
+        {
+            <h1 style="background-color:lightyellow; text-align:center">No Item Found</h1>
+        }
+        else
+        {
+
+            foreach (var item in Model)
+            {
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-1">
+                        <div class="thumbnews thumb-shadow post-thumbnail img-responsive">
+                            <img src="/Content/UploadedImg/img_@(item.Id)_0.jpg" height="240px" width="350px" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-lg-offset-1" style="background-color:lightyellow; opacity:0.7; font-family:'Hobo Std'">
+                        <div class="header">
+                            <h3 style="color:brown"><label>@item.name</label></h3>
+
+                            <form action='@Url.Action("ImageView", "Home")' method="post" role="form" style="stop-opacity:initial">
+                                <input type="hidden" value="@item.Id" name="Id" />
+
+                                <div class="news thumbnews">
+                                    <h4>
+                                        <hr />
+                                        <b>Price: </b>&nbsp PKR. @(item.price)/-<br />
+                                        <b>Description: </b>&nbsp @item.desc <hr />
+                                    </h4>
+                                    <button type="submit" class="btn btn-success" value="more" style="font-family:'Hobo Std'">
+                                        More >>
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <br />
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-lg-9 col-lg-offset-1">
+                        <br /><hr /><br />
+                    </div>
+                </div>
+            }
+        }
+
+    }
+</div>
+
+@*<div>
+        hi
+        @RenderSection("FancyBox_1", required: false)
+
+        @RenderSection("FancyBox_2", required: false)
+        bye
+    </div>*@
+
+<br /><br />
+
+
+
+<br />
+<br />
+

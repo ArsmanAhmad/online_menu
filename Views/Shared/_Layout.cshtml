@@ -11,7 +11,9 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
+    <link href="~/Content/hover-min.css" rel="stylesheet" />
+    <link href="~/Content/hover.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     @* <link rel="stylesheet" href="~/Content/jquery.shining.min.css"> *@
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
@@ -85,26 +87,26 @@
             </div>
 
             <div style="font-weight:600" id="navbar" class="collapse navbar-collapse">
-                <img src="~/Content/Icons/logo2.png" class="pull-left" width="90px" height="50px" style="margin-right:2%" />
+                <img src="~/Content/Icons/logo2.png" class="pull-left hvr-buzz-out" width="90px" height="50px" style="margin-right:2%; margin-top:0.3%" />
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(" Home", "Index", "Home", new { @class = "glyphicon glyphicon-home" })</li>
-                    <li>@Html.ActionLink(" Menu", "Menu", "Home", new { @class = "glyphicon glyphicon-th-list" })</li>
-                    <li>@Html.ActionLink(" Make Order", "Order", "Home", new { @class = "glyphicon glyphicon-shopping-cart" })</li>
-                    <li>@Html.ActionLink(" Contact Us", "ContactUs", "Home", new { @class = "glyphicon glyphicon-cutlery" })</li>
+                    <li>@Html.ActionLink(" Home", "Index", "Home", new { @class = "glyphicon glyphicon-home  hvr-bounce-to-left" })</li>
+                    <li>@Html.ActionLink(" Menu", "Menu", "Home", new { @class = "glyphicon glyphicon-th-list hvr-bounce-to-top" })</li>
+                    <li>@Html.ActionLink(" Make Order", "Order", "Home", new { @class = "glyphicon glyphicon-shopping-cart hvr-bounce-to-left" })</li>
+                    <li>@Html.ActionLink(" Contact Us", "ContactUs", "Home", new { @class = "glyphicon glyphicon-cutlery hvr-bounce-to-top" })</li>
 
                     @{
                         if ((string)Session["user"] == "Anonymos")
                         {
-                            <li>@Html.ActionLink(" SignUp", "SignUp", "Home", new { @class = "glyphicon glyphicon-send" })</li>
+                            <li>@Html.ActionLink(" SignUp", "SignUp", "Home", new { @class = "glyphicon glyphicon-send hvr-bounce-to-right" })</li>
                         }
                         else if ((string)Session["user"] != "Anonymos")
                         {
-                            <li>@Html.ActionLink(" SignOut", "SignOut", "Home", new { @class = "glyphicon glyphicon-hand-right" })</li>
+                            <li>@Html.ActionLink(" SignOut", "SignOut", "Home", new { @class = "glyphicon glyphicon-hand-right hvr-bounce-to-right" })</li>
                         }
 
                     }
 
-                    @*<li style="margin-left:10px;margin-right:10px;"><a href="~/Home/index"><span class="glyphicon glyphicon-home"><b> Home </b></span></a></li>
+                    @*<li style="margin-left:10px;margin-right:10px;"><a href="~/Home/index"><span class="glyphicon glyphicon-home hvr-bounce-to-left"><b> Home </b></span></a></li>
                         <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/Menu"><span class="glyphicon glyphicon-glass"><b> Menu </b></span></a></li>
                         <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/Order"><span class="glyphicon glyphicon-shopping-cart"><b> Order </b></span></a></li>
                         <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/ContactUs"><span class="glyphicon glyphicon-cutlery"><b> Contact Us </b></span></a></li>
@@ -124,7 +126,7 @@
                     else
                     {
                         <form action="~/Home/login" class="pull-right">
-                            <button id="login" class="btn btn-danger" type="submit" name="login" style="padding-left:30px; padding-right:30px; margin-right:30px; margin-top:10px; "><span class="glyphicon glyphicon-user"></span>&nbsp LOGIN </button>
+                            <button id="login" class="btn btn-danger hvr-bounce-out" type="submit" name="login" style="padding-left:30px; padding-right:30px; margin-right:30px; margin-top:10px; "><span class="glyphicon glyphicon-user"></span>&nbsp LOGIN </button>
                         </form>
                     }
                 }
@@ -197,24 +199,24 @@
 
         <div class="col-sm-1"></div>
         <div class="col-sm-2">
-            <div style="font-family:Aharoni; font-weight:bold; color:black">INFORMATION </div>
-            <div style="font-size:medium; font-family:Arial">
+            <div style="font-family:'Hobo Std'; font-weight:bold; color:black">INFORMATION </div>
+            <div style="font-size:medium; font-family:Arial; color:brown">
                 <br />
-                <p><a href="~/Home/Index">Our Services</a></p>
-                <p><a href="~/Home/ContactUs">Contact Us</a></p>
-                <p><a href="~/Home/Index">Legal Notice</a></p>
-                <p><a href="~/Home/Index">About Us</a></p><br />
+                <p><a href="~/Home/Index"><b style="font-size:medium; font-family:Arial; color:brown">Our Services</b></a></p>
+                <p><a href="~/Home/ContactUs"><b style="font-size:medium; font-family:Arial; color:brown">Contact Us</b></a></p>
+                <p><a href="~/Home/Index"><b style="font-size:medium; font-family:Arial; color:brown">Legal Notice</b></a></p>
+                <p><a href="~/Home/Index"><b style="font-size:medium; font-family:Arial; color:brown">About Us</b></a></p><br />
             </div>
         </div>
         <div class="col-sm-2">
-            <div style="font-family: Aharoni; font-weight: bold; color: black">UpComing Features</div>
-            <div style="font-size:medium; font-family:Arial;">
+            <div style="font-family: 'Hobo Std'; font-weight: bold; color: black">UpComing Features</div>
+            <div>
                 <br />
 
-                <p><a href="#">Special</a></p>
-                <p><a href="#">New Products</a></p>
-                <p><a href="#">Top Saller</a></p>
-                <p><a href="#">Supplier</a></p><br />
+                <p><a href="#"><b style="font-size:medium; font-family:Arial; color:brown">Special</b></a></p>
+                <p><a href="#"><b style="font-size:medium; font-family:Arial; color:brown">New Products</b></a></p>
+                <p><a href="#"><b style="font-size:medium; font-family:Arial; color:brown">Top Saller</b></a></p>
+                <p><a href="#"><b style="font-size:medium; font-family:Arial; color:brown">Supplier</b></a></p><br />
 
             </div>
         </div>
@@ -222,12 +224,14 @@
 
 
         <div class="col-sm-3">
-            <a href="https://www.facebook.com/arsman.ahmad" target="_blank"><img src="~/Content/Images/facebook1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
-            <a href="https://twitter.com/ArsmanAhmad" target="_blank"><img src="~/Content/Images/twiter1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
-            <a href="https://plus.google.com/118217101882189306131" target="_blank"><img src="~/Content/Images/google1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
-            <a href="mailto:arsman_ahmad@yahoo.com" target="_blank"><img src="~/Content/Images/yahoo1.png" width="60" height="60"></a>
+            <div style="font-family: 'Hobo Std'; font-weight: bold; color: black">Follow Us___</div>
+            <br /><br />
 
-            <img src="~/Content/Images/follow.png" width="200" height="120" class="pull-right"><br>
+            <a href="https://www.facebook.com/arsman.ahmad" target="_blank"><img class="hvr-bob" src="~/Content/Images/facebook1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
+            <a href="https://twitter.com/ArsmanAhmad" target="_blank"><img class="hvr-bob" src="~/Content/Images/twiter1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
+            <a href="https://plus.google.com/118217101882189306131" target="_blank"><img class="hvr-bob" src="~/Content/Images/google1.png" width="60" height="60"></a>&nbsp&nbsp&nbsp
+            <a href="mailto:arsman_ahmad@yahoo.com" target="_blank"><img class="hvr-bob" src="~/Content/Images/yahoo1.png" width="60" height="60"></a>
+
         </div>
 
         <div class="col-sm-3" style="font-family:'Hobo Std'; font-size:large">
@@ -236,7 +240,7 @@
 
                 <input type="text" class="form-control" name="searchItem" id="searchItem" placeholder="Item Name" style="width:90%; border:solid" />
                 <br /><br />
-                <button type="submit" class="btn btn-success" id="searchBtn" name="searchBtn" 
+                <button type="submit" class="btn btn-success hvr-bounce-out" id="searchBtn" name="searchBtn" 
                             style=" font-weight:bold; font-family:'Hobo Std'">
                     Search Item
                 </button>

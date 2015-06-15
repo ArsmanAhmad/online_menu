@@ -5,12 +5,15 @@
 
 @using OnlineMenu.Models
 
-<br>
+<br />
 <br />
 
-<div class="container-fluid well well-sm" id="bgImg" style="margin-left: 30px; font-size:300%; margin-right: 11px; color: white; font-family: 'Hobo Std';">
+<div class="container-fluid hvr-skew" style="margin-left: 30px; font-size:300%; margin-right: 11px; color: brown; font-family: 'Hobo Std';">
     Today's MENU
-    <img src="~/Content/Images/newItem.gif" width="7%" height="7%" ; class="pull-right" />
+    <img src="~/Content/Images/newItem.gif" width="5%" height="5%" />
+</div>
+<div style="margin-left:50px; margin-right:750px">
+    <hr />
 </div>
 <div class="row">
 
@@ -22,7 +25,7 @@
 
             </div>
             <div class="thumbnews thumb-shadow post-thumbnail img-responsive">
-                <img src="/Content/UploadedImg/img_@(item.Id)_0.jpg" height="200px" width="350px" />
+                <img src="/Content/UploadedImg/img_@(item.Id)_0.jpg" height="200px" width="370px" />
             </div>
             <form action='@Url.Action("ImageView", "Home")' method="post" role="form" style="stop-opacity:initial">
                 <input type="hidden" value="@item.Id" name="Id" />

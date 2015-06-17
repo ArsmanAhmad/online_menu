@@ -6,7 +6,7 @@
 @using OnlineMenu.Models
 
 <br />
-<div >
+<div>
     <h1 style="font-family:'Hobo Std'; color:brown;opacity:0.6; background-color:lightyellow"> &nbsp Pendig Orders </h1>
     <hr />
 </div>
@@ -21,23 +21,31 @@
             foreach (var order in Model)
             {
                 <br />
-                <div class="well well-sm" style="margin-left:10%; margin-right:10%">
-                    <form class="form-horizontal" action='@Url.Action("Approved","Admin")' method="post">
-                        <input type="hidden" value="@order.Id" name="Id" />
-                        <p><b>Order Id:</b> @order.Id </p>
-                        <p><b>Name:</b> @order.name </p>
-                        <p><b>Email:</b> @order.email </p>
-                        <p><b>Address:</b> @order.address</p>
-                        <p><b>Comment:</b> @order.comment</p>
-                        <p><b>Status:</b> Pending....</p>
-                        @foreach (var orderItem in order.OrderItems)
-                        {
-                            <p>@orderItem.Item.name : @orderItem.Quantity</p>
-                        }
-                        <input type="hidden" name="OrderId" value="@order.Id" />
-                        <input class="btn btn-primary pull-right" style="background-color:brown" type="submit" value="Deliver" />
-                    </form>
-                    <br />
+                <div class="well well-sm" style="margin-left:10%;">
+                    <p><b>Order Id:</b> @order.Id </p>
+                    <p><b>Name:</b> @order.name </p>
+                    <p><b>Email:</b> @order.email </p>
+                    <p><b>Address:</b> @order.address</p>
+                    <p><b>Comment:</b> @order.comment</p>
+                    <p><b>Status:</b> Pending....</p>
+                    @foreach (var orderItem in order.OrderItems)
+                    {
+                        <p>@orderItem.Item.name : @orderItem.Quantity</p>
+                    }
+                    <input type="hidden" name="OrderId" value="@order.Id" />
+                   
+                    <div class="row">
+                        <form class="form-horizontal col-lg-1 col-lg-offset-8" action='@Url.Action("Approved","Admin")' method="post">
+                            <input type="hidden" value="@order.Id" name="Id" />
+                            <input class="btn btn-success" style="padding-left:20%; padding-right:20%;" type="submit" value="Approve Order" />
+                        </form>
+
+                        <form class="form-horizontal col-lg-1 col-lg-offset-1" action='@Url.Action("Cancel","Admin")' method="post">
+                            <input type="hidden" value="@order.Id" name="Id" />
+                            <input class="btn btn-danger" style="padding-left:20%; padding-right:20%;" type="submit" value="Cancel Order" />
+                        </form>
+                    </div>
+                    
                 </div>
 
 

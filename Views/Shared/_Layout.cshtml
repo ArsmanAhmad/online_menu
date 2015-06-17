@@ -2,10 +2,16 @@
 <!--dsfkhdkj-->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <title>@ViewBag.Title</title>
+    <title>
+        @ViewBag.Title
+    </title>
+    
+    <link rel="shortcut icon" href="~/Content/Images/A.ico">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -89,28 +95,28 @@
             <div style="font-weight:600" id="navbar" class="collapse navbar-collapse">
                 <img src="~/Content/Icons/logo2.png" class="pull-left hvr-buzz-out" width="90px" height="50px" style="margin-right:2%; margin-top:0.3%" />
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(" Home", "Index", "Home", new { @class = "glyphicon glyphicon-home  hvr-bounce-to-left" })</li>
-                    <li>@Html.ActionLink(" Menu", "Menu", "Home", new { @class = "glyphicon glyphicon-th-list hvr-bounce-to-top" })</li>
-                    <li>@Html.ActionLink(" Make Order", "Order", "Home", new { @class = "glyphicon glyphicon-shopping-cart hvr-bounce-to-left" })</li>
-                    <li>@Html.ActionLink(" Contact Us", "ContactUs", "Home", new { @class = "glyphicon glyphicon-cutlery hvr-bounce-to-top" })</li>
+                    <li>@Html.ActionLink(" Home", "Index", "Home", new { @class = "glyphicon glyphicon-home  hvr-bounce-to-left", style = "font-weight:bold; color:white " })</li>
+                    <li>@Html.ActionLink(" Menu", "Menu", "Home", new { @class = "glyphicon glyphicon-th-list hvr-bounce-to-top", style = "font-weight:bold; color:white " })</li>
+                    <li>@Html.ActionLink(" MakeOrder", "Order", "Home", new { @class = "glyphicon glyphicon-shopping-cart hvr-bounce-to-left", style = "font-weight:bold; color:white " })</li>
+                    <li>@Html.ActionLink(" ContactUs", "ContactUs", "Home", new { @class = "glyphicon glyphicon-cutlery hvr-bounce-to-top", style = "font-weight:bold; color:white " })</li>
 
                     @{
                         if ((string)Session["user"] == "Anonymos")
                         {
-                            <li>@Html.ActionLink(" SignUp", "SignUp", "Home", new { @class = "glyphicon glyphicon-send hvr-bounce-to-right" })</li>
+                            <li>@Html.ActionLink(" SignUp", "SignUp", "Home", new { @class = "glyphicon glyphicon-send hvr-bounce-to-right", style = "font-weight:bold; color:white " })</li>
                         }
                         else if ((string)Session["user"] != "Anonymos")
                         {
-                            <li>@Html.ActionLink(" SignOut", "SignOut", "Home", new { @class = "glyphicon glyphicon-hand-right hvr-bounce-to-right" })</li>
+                            <li>@Html.ActionLink(" SignOut", "SignOut", "Home", new { @class = "glyphicon glyphicon-hand-right hvr-bounce-to-right", style = "font-weight:bold; color:white " })</li>
                         }
 
                     }
 
                     @*<li style="margin-left:10px;margin-right:10px;"><a href="~/Home/index"><span class="glyphicon glyphicon-home hvr-bounce-to-left"><b> Home </b></span></a></li>
-                        <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/Menu"><span class="glyphicon glyphicon-glass"><b> Menu </b></span></a></li>
-                        <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/Order"><span class="glyphicon glyphicon-shopping-cart"><b> Order </b></span></a></li>
-                        <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/ContactUs"><span class="glyphicon glyphicon-cutlery"><b> Contact Us </b></span></a></li>
-                        <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/SignUp"><span class="glyphicon glyphicon-cutlery"><b> Sign Up </b></span></a></li>
+                    <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/Menu"><span class="glyphicon glyphicon-glass"><b> Menu </b></span></a></li>
+                    <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/Order"><span class="glyphicon glyphicon-shopping-cart"><b> Order </b></span></a></li>
+                    <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/ContactUs"><span class="glyphicon glyphicon-cutlery"><b> Contact Us </b></span></a></li>
+                    <li style="margin-left:10px;margin-right:10px;"><a href="~/Home/SignUp"><span class="glyphicon glyphicon-cutlery"><b> Sign Up </b></span></a></li>
                     *@
                 </ul>
 

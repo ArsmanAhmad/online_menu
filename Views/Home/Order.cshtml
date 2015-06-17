@@ -57,7 +57,7 @@
                         @foreach (Item ob in Model)
                         {
                             <div class="form-group">
-                                <label for="add" class="col-sm-4 control-label">@ob.name</label>
+                                <label for="add" class="col-sm-4  col-sm-offset-1 control-label">@ob.name</label>
                                 <div class="col-sm-4">
                                     <select class="form-control" id="menu" name="item">
                                         @for (int i = 0; i <= 10; i++)
@@ -76,7 +76,7 @@
                     <br />
                     <div class="form-horizontal col-lg-offset-1">
                         <label>Comment:</label>
-                        <textarea rows="8" cols="50" name="comment" placeholder="Plz, Deliver Fast" style="border:solid" required></textarea>
+                        <textarea rows="8" cols="50" name="comment" placeholder="ie., Plz, Deliver Fast" style="border:solid" required></textarea>
                     </div>
                     <div class="pull-right">
                         <br />
